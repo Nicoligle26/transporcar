@@ -1,4 +1,3 @@
-from re import search
 from django.contrib import admin
 from personas.models import User, Conductor
 
