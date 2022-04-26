@@ -10,13 +10,13 @@ def index(request):
     return render(request, 'home.html')
 
 
-def list(request):
+def getUsers(request):
     users = User.objects.all()
     data = {'users': users}
     return render(request, 'listado_user.html', data)
 
 
-def getvehiculos(request):
+def getVehiculos(request):
     id = request.GET.get('cliente')
     vehiculos = Vehiculo.objects.filter(usuario_id=id)
     data = {'vehiculos': vehiculos, 'id': id}
