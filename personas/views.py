@@ -17,7 +17,8 @@ def getUsers(request):
 
 
 def getVehiculos(request):
-    id = request.GET.get('cliente')
-    vehiculos = Vehiculo.objects.filter(usuario_id=id)
-    data = {'vehiculos': vehiculos, 'id': id}
+    id = request.POST.get('cliente')
+    users = User.objects.all()
+    vehiculos = Vehiculo.objects.filter(usuario=id)
+    data = {'vehiculos': vehiculos, 'id': id, 'users': users}
     return render(request, 'listado_user.html', data)

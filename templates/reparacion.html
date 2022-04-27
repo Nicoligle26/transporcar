@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div>
+    <h1>Sistema de reparación</h1>
+
+    <div>
+       <h2>Reparacion No: {{reparacion.id}}</h2>
+       <h2>Cliente: {{reparacion.vehiculo.usuario.documento}}-{{reparacion.vehiculo.usuario.nombres}} {{reparacion.vehiculo.usuario.apellidos}}</h2>
+       <h2>Conductor: {{reparacion.vehiculo.conductor.documento}}-{{reparacion.vehiculo.conductor.nombres}} {{reparacion.vehiculo.conductor.apellidos}}</h2>
+       <h2>Dirección Cliente: {{reparacion.vehiculo.usuario.direccion}}</h2>
+       <h2>Telefono: {{reparacion.vehiculo.usuario.telefono}}</h2>
+       <h2>Email: {{reparacion.vehiculo.usuario.correo}}</h2>
+       <h2>Fecha: {{reparacion.fecha}}</h2>
+    </div>
+</div>
+
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th colspan="5">Detalles de la reparación</th>
+            </tr>
+            <tr>
+                <th scope="col" class="px-6 py-3 text-center">Codigo</th>
+                <th scope="col" class="px-6 py-3 text-center">Descripción</th>
+                <th scope="col" class="px-6 py-3 text-center">Precio</th>
+                <th scope="col" class="px-6 py-3 text-center">Cantidad</th>
+                <th scope="col" class="px-6 py-3 text-center">Subtotal</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for reg in detalles %}
+            <tr
+                class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
+                <td class="px-6 py-4 text-center">{{reg.id}}</td>
+                <td class="px-6 py-4 text-center">{{reg.servicio.descripcion}}</td>
+                <td class="px-6 py-4 text-center">{{reg.costo}}</td>
+                <td class="px-6 py-4 text-center">{{reg.cantidad}}</td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

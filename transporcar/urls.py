@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path
 from vehiculos.views import list
 from personas.views import getUsers, getVehiculos
+from reparaciones.views import show
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vehiculo/', list),
+    path('vehiculos/', list),
     path('users/', getUsers),
-    path('list_user/', getVehiculos)
+    path('list_user/', getVehiculos),
+    path('reparacion/<id>', show)
 ]
