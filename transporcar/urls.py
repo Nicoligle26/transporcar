@@ -22,7 +22,7 @@ from reparaciones.views import show
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vehiculos/', list),
-    path('users/', getUsers),
+    path('', getUsers),
     path('list_user/', getVehiculos),
     path('reparacion/<id>', show)
 ]
