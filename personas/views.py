@@ -19,6 +19,7 @@ def getUsers(request):
 def getVehiculos(request):
     id = request.POST.get('cliente')
     users = User.objects.all()
-    vehiculos = Vehiculo.objects.filter(usuario=id)
-    data = {'vehiculos': vehiculos, 'id': id, 'users': users}
-    return render(request, 'listado_user.html', data)
+    if request.method == 'POST':
+        vehiculos = Vehiculo.objects.filter(usuario=id)
+        data = {'vehiculos': vehiculos, 'id': id, 'users': users}
+        return render(request, 'listado_user.html', data)

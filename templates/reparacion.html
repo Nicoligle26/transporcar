@@ -1,25 +1,50 @@
 {% extends 'index.html' %}
 {% block content %}
 
-<div>
-    <h1>Sistema de reparación</h1>
-
+<div class="mt-5 p-5">
+    <h1 class="text-center mb-5 font-bold text-base">SISTEMA DE REPARACIÓN</h1>
     <div>
-       <h2>Reparacion No: {{reparacion.id}}</h2>
-       <h2>Cliente: {{reparacion.vehiculo.usuario.documento}}-{{reparacion.vehiculo.usuario.nombres}} {{reparacion.vehiculo.usuario.apellidos}}</h2>
-       <h2>Conductor: {{reparacion.vehiculo.conductor.documento}}-{{reparacion.vehiculo.conductor.nombres}} {{reparacion.vehiculo.conductor.apellidos}}</h2>
-       <h2>Dirección Cliente: {{reparacion.vehiculo.usuario.direccion}}</h2>
-       <h2>Telefono: {{reparacion.vehiculo.usuario.telefono}}</h2>
-       <h2>Email: {{reparacion.vehiculo.usuario.correo}}</h2>
-       <h2>Fecha: {{reparacion.fecha}}</h2>
+        <table class="ml-5">
+            <tbody>
+                <tr>
+                    <td class="font-bold">Reparacion No:</td>
+                    <td class="pl-5">{{reparacion.id}}</td>
+                    <td class="font-bold">Fecha:</td>
+                    <td class="pl-5">{{reparacion.fecha}}</td>
+                </tr>
+                <tr>
+                    <td class="font-bold">Cliente:</td>
+                    <td class="pl-5">{{reparacion.vehiculo.usuario.documento}}-{{reparacion.vehiculo.usuario.nombres}}
+                        {{reparacion.vehiculo.usuario.apellidos}}</td>
+                </tr>
+                <tr>
+                    <td class="font-bold">Conductor:</td>
+                    <td class="pl-5">
+                        {{reparacion.vehiculo.conductor.documento}}-{{reparacion.vehiculo.conductor.nombres}}
+                        {{reparacion.vehiculo.conductor.apellidos}}</td>
+                </tr>
+                <tr>
+                    <td class="font-bold">Dirección Cliente:</td>
+                    <td class="pl-5">{{reparacion.vehiculo.usuario.direccion}}</td>
+                </tr>
+                <tr>
+                    <td class="font-bold">Telefono:</td>
+                    <td class="pl-5">{{reparacion.vehiculo.usuario.telefono}}</td>
+                </tr>
+                <tr>
+                    <td class="font-bold">Email:</td>
+                    <td class="pl-5">{{reparacion.vehiculo.usuario.correo}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
-<div>
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-8 mt-5 shadow-blue-700">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-                <th colspan="5">Detalles de la reparación</th>
+                <th colspan="5" class="text-center px-6 py-3 text-base">Detalles de la reparación</th>
             </tr>
             <tr>
                 <th scope="col" class="px-6 py-3 text-center">Codigo</th>
@@ -36,14 +61,17 @@
                 class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                 <td class="px-6 py-4 text-center">{{reg.id}}</td>
                 <td class="px-6 py-4 text-center">{{reg.servicio.descripcion}}</td>
-                <td class="px-6 py-4 text-center">{{reg.costo}}</td>
+                <td class="px-6 py-4 text-center">${{reg.costo}}</td>
                 <td class="px-6 py-4 text-center">{{reg.cantidad}}</td>
-                <td></td>
+                <td class="px-6 py-4 text-center">${% widthratio reg.costo 1 reg.cantidad %}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
 
+<div class="mt-5 text-center">
+    <span class="text-base p-5">Total: <span class="ml-20">${{total}}</span></span>
+</div>
 
 {% endblock %}
