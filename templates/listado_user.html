@@ -2,14 +2,14 @@
 {% block content %}
 
 <div
-    class="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 m-auto mt-10 shadow-blue-700">
-    <h1 class="mb-3 text-gray-700 text-center dark:text-white">Taller FrontEnd Backend con Framework Web</h1>
+    class="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 m-auto mt-10 shadow-pink-700">
+    <h1 class="mb-3 text-gray-700 text-center dark:text-white">Taller Front-End y Back-End con Framework Web</h1>
     <form class="space-y-6" action="/list_user/" method="POST">
         {% csrf_token %}
         <div class="flex justify-center">
             <div class="mb-3 xl:w-96">
                 <select
-                    class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-pink-600 focus:outline-none"
                     aria-label="Default select example" name="cliente">
                     <option selected class="text-center">--Seleccione el Cliente--</option>
                     {% for reg in users %}
@@ -18,14 +18,14 @@
                 </select>
                 <div class="flex space-x-2 justify-center">
                     <button type="submit"
-                        class="p-1 inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mt-5">Consultar</button>
+                        class="p-1 inline-block px-6 py-2.5 bg-pink-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-pink-800 active:shadow-lg transition duration-150 ease-in-out mt-5">Consultar</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-8 mt-8 shadow-blue-700">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-8 mt-8 shadow-pink-700">
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -41,7 +41,7 @@
             <tr
                 class="border-b dark:bg-gray-800 dark:border-gray-700 odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700">
                 <td class="px-6 py-4 text-center"><a href="/reparacion/{{reg.id}}"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{reg.placa}}</a></td>
+                        class="font-medium text-pink-600 dark:text-pink-500 hover:underline">{{reg.placa}}</a></td>
                 <td class="px-6 py-4 text-center">{{reg.modelo}}</td>
                 <td class="px-6 py-4 text-center">{{reg.marca}}</td>
                 <td class="px-6 py-4 text-center">{{reg.usuario_id}}- {{reg.usuario.nombres}} {{reg.usuario.apellidos}}

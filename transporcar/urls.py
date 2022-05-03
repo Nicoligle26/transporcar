@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from vehiculos.views import list
+from vehiculos.views import list, create
 from personas.views import getUsers, getVehiculos
 from reparaciones.views import show
 urlpatterns = [
@@ -24,5 +24,6 @@ urlpatterns = [
     path('vehiculos/', list),
     path('', getUsers),
     path('list_user/', getVehiculos),
-    path('reparacion/<id>', show)
+    path('reparacion/<id>', show),
+    path('infracciones/', create)
 ]

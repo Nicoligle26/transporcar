@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from reparaciones.models import Vehiculo
+from vehiculos.models import Infraccion
+from personas.models import Conductor
 
 
 # Create your views here.
@@ -12,3 +14,22 @@ def list(request):
     vehiculos = Vehiculo.objects.all()
     data = {'vehiculos': vehiculos}
     return render(request, 'listado_vehiculo.html', data)
+
+
+def create(request):
+    conductores = Conductor.objects.all()
+    vehiculos = Vehiculo.objects.all()
+    if request.method == 'POST':
+        infraccion = Infraccion()
+        infraccion.fecha = request.POST.get('fecha')
+        infraccion.descripcion = request.POST.get('observacion')
+        infraccion.valor = request.POST.get('valor')
+        infraccion.conductor = Conductor.objects.get(
+            id=request.POST.get('conductor'))
+        infraccion.vehiculo = Vehiculo.objects.get(
+            id=request.POST.get('vehiculo'))
+        infraccion.save()
+        print('El registro ha sido guardado')
+    msg = 'La infraccion ha sido guardada'
+    data = {'conductores': conductores, 'vehiculos': vehiculos, 'msg': msg}
+    return render(request, 'registrar_infraccion.html', data)
