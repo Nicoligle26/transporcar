@@ -16,14 +16,16 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from vehiculos.views import list, create
+from vehiculos.views import list, create, delete
 from personas.views import getUsers, getVehiculos
-from reparaciones.views import show
+from reparaciones.views import show, listado_pdf
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('vehiculos/', list),
     path('', getUsers),
     path('list_user/', getVehiculos),
     path('reparacion/<id>', show),
-    path('infracciones/', create)
+    path('infracciones/', create),
+    path('eliminar_vehiculo/', delete),
+    path('lista_pdf',listado_pdf)
 ]

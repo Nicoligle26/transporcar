@@ -33,3 +33,12 @@ def create(request):
     msg = 'La infraccion ha sido guardada'
     data = {'conductores': conductores, 'vehiculos': vehiculos, 'msg': msg}
     return render(request, 'registrar_infraccion.html', data)
+
+
+def delete(request, id):
+    vehiculo = Vehiculo.objects.get(id=id)
+    vehiculo.placa
+    vehiculo.delete()
+    vehiculos = Vehiculo.objects.all()
+    data = {'vehiculos': vehiculos}
+    return render(request, 'lista_vehiculo.html', data)
