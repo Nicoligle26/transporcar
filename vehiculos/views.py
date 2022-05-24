@@ -1,11 +1,12 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from reparaciones.models import Vehiculo
+from reparaciones.models import Vehiculo, Reparacion
 from vehiculos.models import Infraccion
-from personas.models import Conductor
-
+from personas.models import Conductor, User
 
 # Create your views here.
+
+
 def index(request):
     return render(request, 'home.html')
 

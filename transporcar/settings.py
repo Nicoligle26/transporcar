@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-m^6mdp_e8wf2g-cwqzj!zk5**p7r1_&trm)_(vesjx&qu7$93k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.20.109', '127.0.0.1']
+ALLOWED_HOSTS = ['192.168.20.109', '127.0.0.1', '*']
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'transporcar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

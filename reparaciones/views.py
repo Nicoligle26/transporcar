@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from reparaciones.models import Reparacion, Detalle
 from vehiculos.models import Vehiculo
@@ -7,7 +7,7 @@ from vehiculos.models import Vehiculo
 from io import BytesIO
 from xhtml2pdf import pisa
 from django.template.loader import get_template
-
+import os
 
 # Create your views here.
 
@@ -43,3 +43,21 @@ def listado_pdf(request):
     data = {'vehiculos': vehiculos}
     pdf = render_to_pdf('pdf/vehiculos_pdf.html', data)
     return HttpResponse(pdf, content_type='application/pdf')
+
+
+def taller_final(request):
+    id = request.POST.get('vehiculo')
+    vehiculos = Vehiculo.objects.all()
+    data = {'vehiculos': vehiculos}
+    if request.method == 'POST':
+        reparaciones = Reparacion.objects.filter(vehiculo=id)
+        vehiculo = Vehiculo.objects.get(id=id)
+        total = 0
+        for x in reparaciones:
+            total = total + x.costo
+        data = {'vehiculos': vehiculos, 'vehiculo': vehiculo,
+                'reparaciones': reparaciones, 'total': total}
+        pdf = render_to_pdf('pdf/recibo_pdf.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
+    else:
+        return render(request, 'taller_final.html', data)
