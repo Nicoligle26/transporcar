@@ -1,0 +1,113 @@
+{% extends 'header_pdf.html' %}
+{% block content %}
+
+<div style="margin-top: 20px;">
+  <div>
+      <table style="padding: 2px;">
+          <tbody>
+              <tr>
+                  <td colspan="2" style="font-weight: bold; font-size: 15px; text-align: center;">Propietario:</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Nombre:</td>
+                  <td>{{vehiculo.usuario.nombres}}</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Direccion:</td>
+                  <td>{{vehiculo.usuario.direccion}}</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Telefono:</td>
+                  <td>{{vehiculo.usuario.telefono}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <div>
+      <table style="padding: 2px;">
+          <tbody>
+              <tr>
+                  <td colspan="2" style="font-weight: bold; font-size: 15px; text-align: center;">Conductor:</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Nombre:</td>
+                  <td>{{vehiculo.conductor.nombres}}</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Direccion:</td>
+                  <td>{{vehiculo.conductor.direccion}}</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Telefono:</td>
+                  <td>{{vehiculo.conductor.telefono}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+
+<div style="margin-top: 20px;">
+  <div>
+      <table style="padding: 2px;">
+          <tbody>
+              <tr>
+                  <td colspan="2" style="font-weight: bold; font-size: 15px; text-align: center;">Vehiculo:</td>
+              </tr>
+            <tr>
+                  <td style="font-weight: bold;">Placa:</td>
+                  <td>{{vehiculo.placa}}</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Modelo:</td>
+                  <td>{{vehiculo.modelo}}</td>
+              </tr>
+              <tr>
+                  <td style="font-weight: bold;">Marca:</td>
+                  <td>{{vehiculo.marca}}</td>
+              </tr>
+              <tr>
+                <td style="font-weight: bold;">Capacidad:</td>
+                <td>{{vehiculo.capacidad}}</td>
+            </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <table style="padding: 2px; border: 1px solid black;">
+      <thead>
+          <tr>
+              <td style="text-align: center; font-size: 15px; font-weight: bold;" colspan="4">Resumen de Infracciones
+              </td>
+          </tr>
+          <tr>
+              <th style="text-align: center;">No.</th>
+              <th style="text-align: center;">Fecha</th>
+              <th style="text-align: center;">Descripcion</th>
+              <th style="text-align: center;">Valor</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          {% for reg in infracciones %}
+          <tr class="">
+              <td style="text-align: center;">{{reg.id}}</td>
+              <td style="text-align: center;">{{reg.fecha}}</td>
+              <td style="text-align: center;">{{reg.descripcion}}</td>
+              <td style="text-align: center;">{{reg.valor}}</td>
+          </tr>
+          {%endfor%}
+      </tbody>
+  </table>
+</div>
+
+<div>
+  <h1>Total Infraccion: <b> {{total}}</b></h1>
+</div>
+
+{% endblock %}

@@ -1,0 +1,2 @@
+user = nicol
+password = 123

@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from vehiculos.views import list, create, delete
+from vehiculos.views import list, create, delete, parcial_final, reporte_pdf
 from personas.views import getUsers, getVehiculos
 from reparaciones.views import show, listado_pdf, taller_final
 urlpatterns = [
@@ -28,5 +28,7 @@ urlpatterns = [
     path('infracciones/', create),
     path('eliminar_vehiculo/', delete),
     path('lista_pdf', listado_pdf),
-    path('taller_final/', taller_final)
+    path('taller_final/', taller_final),
+    path('parcial_final/', parcial_final),
+    path('reporte_pdf/<id>', reporte_pdf),
 ]
